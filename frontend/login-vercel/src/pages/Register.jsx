@@ -30,7 +30,7 @@ export function Register() {
                         </div>
 
                         <div className="flex justify-center">
-                            <p>Ja possui conta? <span className="underline cursor-pointer"><Link to="/register">Faca login</Link></span></p>
+                            <p>Ja possui conta? <span className="underline cursor-pointer"><Link to="/">Faca login</Link></span></p>
                         </div>
 
                     </form>
