@@ -1,7 +1,12 @@
 import react from "react";
 import { Link } from "react-router-dom"
+import {registerUsers} from "../api/apiUsers.js"
 
 export function Login() {
+
+
+
+
     return (
 
         <div className="fixed inset-0 flex">

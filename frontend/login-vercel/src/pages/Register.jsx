@@ -1,7 +1,31 @@
-import react from "react";
-import { Link } from "react-router-dom"
+import react, {useState} from "react";
+import { Link, useNavigate } from "react-router-dom"
+import {registerUsers} from "../api/apiUsers.js"
 
 export function Register() {
+
+    const navigate = useNavigate();
+
+    const [username, setUsername] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
+    const sendForms = async (e) => {
+        e.preventDefault();
+
+        const userData = {username, email, password};
+
+        try {
+
+            await registerUsers(userData);
+            alert("Registration successful!");
+            navigate("/")
+
+        } catch (error) {
+            console.error("Error:", error);
+        }
+    }
+
     return (
 
         <div className="fixed inset-0 flex">
@@ -9,20 +33,20 @@ export function Register() {
             <div className="w-1/2">
                 <div className="grid">
                     <p className="text-8xl mt-12">REGISTER</p>
-                    <form submit="" className="mt-32 text-left justify-center grid gap-12">
+                    <form onSubmit={sendForms} className="mt-32 text-left justify-center grid gap-12">
                         <div className="grid gap-4 ">
                             <label htmlFor="username" className="text-xl">Username:</label>
-                            <input type="text" className="border-1 w-96 p-1 rounded-sm" />
+                            <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} className="border-1 w-96 p-1 rounded-sm" />
                         </div>
 
                         <div className="grid gap-4 ">
                             <label htmlFor="email" className="text-xl">Email:</label>
-                            <input type="email" className="border-1 w-96 p-1 rounded-sm" />
+                            <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} className="border-1 w-96 p-1 rounded-sm" />
                         </div>
 
                         <div className="grid gap-4">
                             <label htmlFor="password" className="text-xl">Password:</label>
-                            <input type="password" className="border-1 w-96 p-1 rounded-sm" />
+                            <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} className="border-1 w-96 p-1 rounded-sm" />
                         </div>
 
                         <div className="flex justify-center">
