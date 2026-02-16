@@ -8,7 +8,7 @@ import { Register } from "./pages/Register.jsx"
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/System-Render/">
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
